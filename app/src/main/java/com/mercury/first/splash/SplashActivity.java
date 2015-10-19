@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
-                        Log.e(TAG, e.getMessage() );
+                        Log.e(TAG, e.getMessage());
                     }
                     Intent i = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(i);
