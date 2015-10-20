@@ -1,17 +1,23 @@
 package com.mercury.first.splash;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        FragmentManager fragmentManager=getFragmentManager();
+        Fragment fragment=fragmentManager.findFragmentById(R.id.main_activity_fragment);
+        if(fragment==null){
+            fragment=new MainActivityFragment();
+            fragmentManager.beginTransaction().add(R.id.activity_main,fragment)
+                    .commit();
+        }
     }
 
 }

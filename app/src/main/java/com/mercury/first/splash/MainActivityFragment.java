@@ -9,19 +9,15 @@ import android.widget.ArrayAdapter;
 
 public class MainActivityFragment extends ListFragment {
 
-    public MainActivityFragment() {
-
-    }
-
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
-        super.onActivityCreated(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         String[] items=new String[40];
-        for(int i=0; i<items.length;i++){
-            items[i]="Item "+i;
+        for(int i=0; i<items.length;i++) {
+            items[i] = "Item " + i;
         }
         ArrayAdapter<String> adapter=new ArrayAdapter<>(
-                getActivity().getApplicationContext(),
+                getActivity(),
                 R.layout.main_listview_item,
                 R.id.main_list_item_text,items);
         setListAdapter(adapter);

@@ -8,16 +8,17 @@ import android.util.Log;
 public class SplashActivity extends AppCompatActivity {
 
     private final String TAG = "SplashActivity";
-    private boolean threadOn;
+    //private final String THREAD_STARTED = "com.mercury.first.splash.SplashActivity.isThreadStarted";
+    private boolean isThreadStarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         if (savedInstanceState != null) {
-            threadOn = true;
+            isThreadStarted = true;
         }
-        if (!threadOn) {
+        if (!isThreadStarted) {
             Thread splash = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -32,7 +33,9 @@ public class SplashActivity extends AppCompatActivity {
                 }
             });
             splash.start();
-            threadOn = true;
+            isThreadStarted = true;
         }
     }
+
+
 }
