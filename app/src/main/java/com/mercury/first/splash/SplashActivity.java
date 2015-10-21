@@ -15,8 +15,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        if(savedInstanceState!=null){
-            isThreadStarted=savedInstanceState.getBoolean(THREAD_STARTED,false);
+        if (savedInstanceState != null) {
+            isThreadStarted = savedInstanceState.getBoolean(THREAD_STARTED, false);
             Log.d(TAG, "Выпихнули: " + isThreadStarted);
         }
         if (!isThreadStarted) {
@@ -40,10 +40,10 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putBoolean(THREAD_STARTED, isThreadStarted);
-        Log.d(TAG, "Запихнули: "+isThreadStarted);
+        Log.d(TAG, "Запихнули: " + isThreadStarted);
     }
 
 

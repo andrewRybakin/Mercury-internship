@@ -9,25 +9,37 @@ import android.widget.ArrayAdapter;
 
 public class MainActivityFragment extends ListFragment {
 
-    public static final String FRAGMENT_TAG="com.mercury.first.splash.MainActivityFragment";
+    public static final String FRAGMENT_TAG = "com.mercury.first.splash.MainActivityFragment";
+
+    private View headerView;
+    private ArrayAdapter<String> adapter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] items=new String[40];
-        for(int i=0; i<items.length;i++) {
+        String[] items = new String[40];
+        for (int i = 0; i < items.length; i++) {
             items[i] = "Item " + i;
         }
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(
+        adapter = new ArrayAdapter<>(
                 getActivity(),
                 R.layout.main_listview_item,
-                R.id.main_list_item_text,items);
-        setListAdapter(adapter);
+                R.id.main_list_item_text, items);
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (headerView != null) this.getListView().addHeaderView(headerView, null, false);
+        this.setListAdapter(adapter);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View v = inflater.inflate(R.layout.fragment_main, container, false);
+        headerView = inflater.inflate(R.layout.main_list_header, null);
+        return v;
     }
 }
