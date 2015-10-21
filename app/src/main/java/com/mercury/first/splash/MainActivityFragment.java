@@ -1,12 +1,16 @@
 package com.mercury.first.splash;
 
+import android.app.AlertDialog;
 import android.app.ListFragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivityFragment extends ListFragment {
 
@@ -26,7 +30,6 @@ public class MainActivityFragment extends ListFragment {
                 getActivity(),
                 R.layout.main_listview_item,
                 R.id.main_list_item_text, items);
-
     }
 
     @Override
@@ -39,6 +42,30 @@ public class MainActivityFragment extends ListFragment {
             this.getListView().addFooterView(footerView, null, false);
         }
         this.setListAdapter(adapter);
+        getListView().setDivider(getResources().getDrawable(android.R.color.transparent));
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(getString(R.string.alert_header))
+                        .setMessage(((TextView) view.findViewById(R.id.main_list_item_text)).getText() + " was clicked")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).setCancelable(false)
+                        .create()
+                        .show();
+                return false;
+            }
+        });
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(), ((TextView) view.findViewById(R.id.main_list_item_text)).getText() + " was clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
