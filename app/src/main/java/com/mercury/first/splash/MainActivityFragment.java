@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 
 public class MainActivityFragment extends ListFragment {
 
+    public static final String FRAGMENT_TAG="com.mercury.first.splash.MainActivityFragment";
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
