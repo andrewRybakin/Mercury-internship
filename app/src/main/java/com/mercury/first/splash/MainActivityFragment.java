@@ -35,7 +35,7 @@ public class MainActivityFragment extends ListFragment {
         if (headerView != null) {
             ((TextView) headerView).setText(getString(R.string.main_header));
             this.getListView().addHeaderView(headerView, null, false);
-            ((TextView) headerView).setText(getString(R.string.main_header));
+            ((TextView) footerView).setText(getString(R.string.main_footer));
             this.getListView().addFooterView(footerView, null, false);
         }
         this.setListAdapter(adapter);
