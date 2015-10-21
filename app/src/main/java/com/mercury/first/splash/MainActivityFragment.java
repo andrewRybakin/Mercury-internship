@@ -6,12 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 public class MainActivityFragment extends ListFragment {
 
     public static final String FRAGMENT_TAG = "com.mercury.first.splash.MainActivityFragment";
 
-    private View headerView;
+    private View headerView, footerView;
     private ArrayAdapter<String> adapter;
 
     @Override
@@ -31,7 +32,12 @@ public class MainActivityFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (headerView != null) this.getListView().addHeaderView(headerView, null, false);
+        if (headerView != null) {
+            ((TextView) headerView).setText(getString(R.string.main_header));
+            this.getListView().addHeaderView(headerView, null, false);
+            ((TextView) headerView).setText(getString(R.string.main_header));
+            this.getListView().addFooterView(footerView, null, false);
+        }
         this.setListAdapter(adapter);
     }
 
@@ -39,7 +45,8 @@ public class MainActivityFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
-        headerView = inflater.inflate(R.layout.main_list_header, null);
+        headerView = inflater.inflate(R.layout.main_list_header_footer, null);
+        footerView = inflater.inflate(R.layout.main_list_header_footer, null);
         return v;
     }
 }

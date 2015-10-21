@@ -5,6 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:text="@string/main_header"
     android:textSize="@dimen/abc_text_size_headline_material"
-    android:paddingBottom="5dp"/>
+    android:paddingBottom="5dp" />
