@@ -67,6 +67,7 @@ public class MainActivityFragment extends ListFragment {
                 Toast.makeText(getActivity(), ((TextView) view.findViewById(R.id.main_list_item_text)).getText() + " was clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

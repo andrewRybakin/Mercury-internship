@@ -8,8 +8,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="com.mercury.first.splash.MainActivityFragment"
     tools:showIn="@layout/activity_main">
+
     <ListView
         android:id="@id/android:list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>
