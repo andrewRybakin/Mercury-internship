@@ -3,4 +3,22 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF8800</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green">#00FF00</color>
+    <color name="light_blue">#0000FF</color>
+    <color name="blue">#000088</color>
+    <color name="purple">#880088</color>
+    <color name="transparent">@android:color/transparent</color>
+    <array name="rainbow">
+        <item>@color/red</item>
+        <item>@color/orange</item>
+        <item>@color/yellow</item>
+        <item>@color/green</item>
+        <item>@color/light_blue</item>
+        <item>@color/blue</item>
+        <item>@color/purple</item>
+        <item>@color/transparent</item>
+    </array>
 </resources>

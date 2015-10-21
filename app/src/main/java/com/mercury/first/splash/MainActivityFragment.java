@@ -2,13 +2,16 @@ package com.mercury.first.splash;
 
 import android.app.AlertDialog;
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,19 +20,17 @@ public class MainActivityFragment extends ListFragment {
     public static final String FRAGMENT_TAG = "com.mercury.first.splash.MainActivityFragment";
 
     private View headerView, footerView;
-    private ArrayAdapter<String> adapter;
+    private MyArrayAdapter adapter;
+    private String[] items;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] items = new String[40];
+        items = new String[40];
         for (int i = 0; i < items.length; i++) {
             items[i] = "Item " + i;
         }
-        adapter = new ArrayAdapter<>(
-                getActivity(),
-                R.layout.main_listview_item,
-                R.id.main_list_item_text, items);
+        adapter = new MyArrayAdapter(getActivity(), R.layout.main_listview_item, items);
     }
 
     @Override
@@ -76,4 +77,26 @@ public class MainActivityFragment extends ListFragment {
         footerView = inflater.inflate(R.layout.main_list_header_footer, null);
         return v;
     }
+
+    private class MyArrayAdapter extends ArrayAdapter<String> {
+
+        private final int COLORS[] = getResources().getIntArray(R.array.rainbow);
+
+        public MyArrayAdapter(Context c, int resId, String[] items) {
+            super(c, resId, items);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            String item = getItem(position);
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext())
+                        .inflate(R.layout.main_listview_item, null);
+            }
+            ((TextView) convertView.findViewById(R.id.main_list_item_text)).setText(item);
+            ((ImageView) convertView.findViewById(R.id.main_list_item_circle)).setColorFilter(COLORS[position % 8], PorterDuff.Mode.MULTIPLY);
+            return convertView;
+        }
+    }
+
 }
