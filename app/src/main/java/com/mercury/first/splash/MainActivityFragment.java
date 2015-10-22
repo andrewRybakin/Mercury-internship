@@ -38,11 +38,11 @@ public class MainActivityFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         if (headerView != null) {
             ((TextView) headerView).setText(getString(R.string.main_header));
-            this.getListView().addHeaderView(headerView, null, false);
+            getListView().addHeaderView(headerView, null, false);
             ((TextView) footerView).setText(getString(R.string.main_footer));
-            this.getListView().addFooterView(footerView, null, false);
+            getListView().addFooterView(footerView, null, false);
         }
-        this.setListAdapter(adapter);
+        setListAdapter(adapter);
         getListView().setDivider(getResources().getDrawable(android.R.color.transparent));
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -67,7 +67,6 @@ public class MainActivityFragment extends ListFragment {
                 Toast.makeText(getActivity(), ((TextView) view.findViewById(R.id.main_list_item_text)).getText() + " was clicked", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
