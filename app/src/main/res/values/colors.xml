@@ -11,7 +11,6 @@
     <color name="blue">#000088</color>
     <color name="purple">#880088</color>
     <color name="transparent">@android:color/transparent</color>
-    <color name="ripple">#ff0055</color>
     <array name="rainbow">
         <item>@color/red</item>
         <item>@color/orange</item>
